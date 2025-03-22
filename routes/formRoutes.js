@@ -3,7 +3,7 @@ const Form = require("../models/FormModel");
 
 const router = express.Router();
 
-/** 📌 Create Form Entry */
+/**Create Form Entry */
 router.post("/", async (req, res) => {
   try {
     const { name, email, message } = req.body;
@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-/** 📌 Get All Forms (Only Non-Deleted) */
+/**Get All Forms (Only Non-Deleted) */
 router.get("/", async (req, res) => {
   try {
     const forms = await Form.find({ isDeleted: false });
@@ -30,7 +30,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-/** 📌 Update a Form */
+/** Update a Form */
 router.put("/:id", async (req, res) => {
     try {
       const form = await Form.findById(req.params.id);
@@ -44,7 +44,7 @@ router.put("/:id", async (req, res) => {
     }
   });
 
-/** 📌 Soft Delete a Form (Mark isDeleted = true) */
+/**Soft Delete a Form (Mark isDeleted = true) */
 router.delete("/:id", async (req, res) => {
     try {
       const form = await Form.findById(req.params.id);
